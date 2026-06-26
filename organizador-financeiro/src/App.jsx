@@ -14,6 +14,14 @@ function App() {
 
   const [transactions, setTransactions] = useState(mockTransactions);
 
+  function deleteTransaction(id) {
+    setTransactions((prevTransactions) =>
+      prevTransactions.filter(
+        (transaction) => transaction.id !== id
+      )
+    );
+  }
+
   return (
     <>
      <Header />
@@ -23,13 +31,14 @@ function App() {
       setTransactions={setTransactions}
     />
 
-<Dashboard
-  transactions={transactions}
-/>
+    <Dashboard
+      transactions={transactions}
+    />
 
-<TransactionList
-  transactions={transactions}
-/>
+    <TransactionList
+      transactions={transactions}
+      deleteTransaction={deleteTransaction}
+    />
     </>
   );
 }

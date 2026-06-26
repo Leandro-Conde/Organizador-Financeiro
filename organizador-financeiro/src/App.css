@@ -182,3 +182,46 @@
     border-right-color: var(--border);
   }
 }
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,.55);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  z-index:999;
+}
+
+.modal{
+
+  width:500px;
+
+  background:white;
+
+  border-radius:12px;
+
+  padding:24px;
+
+  position:relative;
+}
+
+.close-button{
+
+  position:absolute;
+
+  right:15px;
+
+  top:15px;
+
+  cursor:pointer;
+
+  border:none;
+
+  background:none;
+
+  font-size:18px;
+}

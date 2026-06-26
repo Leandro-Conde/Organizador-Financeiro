@@ -1,38 +1,25 @@
+import TransactionItem from "./TransactionItem";
 
-function TransactionList({ transactions }) {
+
+function TransactionList({
+  transactions,
+  deleteTransaction,
+}) {
+
   return (
     <section className="transactions">
 
       <h2>Últimas Transações</h2>
 
-      {transactions.map(transaction => (
-        <div
-          key={transaction.id}
-          className="transaction"
-        >
-          <span>{transaction.descricao}</span>
+      {transactions.map((transaction) => (
 
-          <span>
+    <TransactionItem
+      key={transaction.id}
+      transaction={transaction}
+      deleteTransaction={deleteTransaction}
+    />
 
-            {transaction.tipo === "entrada" &&
-                "🟢"}
-
-            {transaction.tipo === "saida" &&
-                "🔴"}
-
-            {transaction.tipo === "investimento" &&
-                "🟡"}
-
-            {transaction.tipo === "renda_passiva" &&
-                "💎"}
-
-            {" "}
-            R$ {transaction.valor}
-
-            </span>
-        </div>
-      ))}
-
+))}
       <button>
         + Nova Transação
       </button>
