@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 function TransactionForm({
   transactions,
   setTransactions,
+  onSave,
 }) {
 
   const [descricao, setDescricao] = useState("");
@@ -29,6 +30,7 @@ function TransactionForm({
         tipo,
         data,
         observacao,
+        
       };
     
       setTransactions((prevTransactions) => [
@@ -43,6 +45,7 @@ function TransactionForm({
       setTipo("entrada");
       setData("");
       setObservacao("");
+      onSave();
     }
 
   return (
@@ -120,7 +123,13 @@ function TransactionForm({
       </button>
 
     </div>
+
+    
   );
+
+  
 }
+
+
 
 export default TransactionForm;

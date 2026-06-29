@@ -20,10 +20,7 @@ function TransactionList({
     />
 
 ))}
-      <button>
-        + Nova Transação
-      </button>
-
+  
     </section>
   );
 }

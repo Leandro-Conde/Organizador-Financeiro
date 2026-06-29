@@ -5,6 +5,8 @@ import Header from "./components/Header";
 import Dashboard from "./components/Dashboard";
 import TransactionList from "./components/TransactionList";
 import TransactionForm from "./components/TransactionForm";
+import Modal from "./components/Modal";
+import FinanceChart from "./components/FinanceChart";
 
 import { mockTransactions } from "./data/mockData";
 
@@ -13,6 +15,8 @@ import { mockTransactions } from "./data/mockData";
 function App() {
 
   const [transactions, setTransactions] = useState(mockTransactions);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingTransaction, setEditingTransaction] = useState(null);
 
   function deleteTransaction(id) {
     setTransactions((prevTransactions) =>
@@ -22,24 +26,54 @@ function App() {
     );
   }
 
+  function editTransaction(transaction) {
+    setEditingTransaction(transaction);
+    setIsModalOpen(true);
+  }
+
   return (
     <>
      <Header />
 
-     <TransactionForm
+      <Modal
+      isOpen={isModalOpen}
+      onClose={() => setIsModalOpen(false)}
+    >
+    <TransactionForm
       transactions={transactions}
       setTransactions={setTransactions}
+      onSave={() => setIsModalOpen(false)}
     />
+    </Modal>
+
+    <div className="actions">
+
+    <button
+      className="new-transaction-btn"
+      onClick={() => setIsModalOpen(true)}
+    >
+      ➕ Nova Transação
+    </button>
+
+    </div>
 
     <Dashboard
       transactions={transactions}
     />
 
-    <TransactionList
+    <FinanceChart
       transactions={transactions}
-      deleteTransaction={deleteTransaction}
     />
+
+
+    <TransactionList
+  transactions={transactions}
+  deleteTransaction={deleteTransaction}
+  editTransaction={editTransaction}
+/>
     </>
+
+    
   );
 }
 
