@@ -6,7 +6,8 @@ import Dashboard from "./components/Dashboard";
 import TransactionList from "./components/TransactionList";
 import TransactionForm from "./components/TransactionForm";
 import Modal from "./components/Modal";
-import FinanceChart from "./components/FinanceChart";
+import FinanceChart from "./components/charts/FinanceChart";
+
 
 import { mockTransactions } from "./data/mockData";
 
@@ -63,6 +64,12 @@ function App() {
 
     <FinanceChart
       transactions={transactions}
+    />
+
+    <TransactionList
+      transactions={transactions}
+      deleteTransaction={deleteTransaction}
+      editTransaction={editTransaction}
     />
 
 
